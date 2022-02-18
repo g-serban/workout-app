@@ -61,15 +61,89 @@ class _HomePageState extends State<HomePage> {
               width: MediaQuery.of(context).size.width,
               height: 220,
               decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  AppColor.gradientFirst,
-                  AppColor.gradientSecond,
-                ]),
+                gradient: LinearGradient(
+                  colors: [
+                    AppColor.gradientFirst.withOpacity(0.8),
+                    AppColor.gradientSecond.withOpacity(0.9),
+                  ],
+                  // you can define where the rendering should begin
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.centerRight,
+                ),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10),
                   topRight: Radius.circular(80),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    // offset tells you how much it should spread left & right
+                    offset: const Offset(5, 10),
+                    // 5 = left right 10 = top bottom
+                    blurRadius: 10,
+                    // the higer the blurRadiusis, the lighter the shadow is
+                    color: AppColor.gradientSecond.withOpacity(0.2),
+                  )
+                ],
+              ),
+              child: Container(
+                padding: const EdgeInsets.only(left: 20, top: 25, right: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Next workout',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: AppColor.homePageContainerTextSmall,
+                        )),
+                    const SizedBox(height: 5),
+                    Text('Legs toning',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: AppColor.homePageContainerTextSmall,
+                        )),
+                    const SizedBox(height: 5),
+                    Text('Glutes workout',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: AppColor.homePageContainerTextSmall,
+                        )),
+                    const SizedBox(height: 40),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.timer,
+                                size: 20,
+                                color: AppColor.homePageContainerTextSmall),
+                            const SizedBox(width: 8),
+                            Text('60 minutes',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: AppColor.homePageContainerTextSmall,
+                                )),
+                          ],
+                        ),
+                          Expanded(child: Container()),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(60),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColor.gradientFirst,
+                                  blurRadius: 10,
+                                  offset: const Offset(4, 8),
+                                )
+                              ],
+                            ),
+                            child: const Icon(Icons.play_circle_fill,
+                                color: Colors.white, size: 60),
+                          ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
